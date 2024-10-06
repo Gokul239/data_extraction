@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turffle AI</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+        .container {
+            background-color: white; /* White background for the main container */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #loadingMessage {
+            display: none; /* Hide the loading message by default */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5" style="max-width: 97%; max-height: 90%;">
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="inputText">Data to be extracted</label>
+                    <textarea class="form-control" name="context" rows="10" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="inputText">Extraction fields</label>
+                    <textarea class="form-control" name="extraction_feilds" rows="10" placeholder="Type your message here..."></textarea>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="inputText">Extraction fields description</label>
+                    <textarea class="form-control" name="description" rows="10" placeholder="Type your message here..."></textarea>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="additionalInput">Document Type</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="doc_type" placeholder="Mention the document type here....." required>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Fetch</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id="message" class="mt-4 border p-3 bg-light">
+        {% if response %}
+        <p id="messageContent">
+            {{ response }}
+        </p>
+        {% else %}
+        <p id="messageContent">By default, the most recent descriptions and extraction fields will be utilized.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
